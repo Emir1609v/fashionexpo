@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FashionExpo</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+<script>
+  function openModal(src) {
+    document.getElementById('modalImage').src = src;
+    document.getElementById('imageModal').classList.remove('hidden');
+    document.getElementById('imageModal').classList.add('flex');
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').classList.add('hidden');
+    document.getElementById('imageModal').classList.remove('flex');
+  }
+</script>
+
+<body class="bg-gray-100">
+
+<nav class="bg-gray-800 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+      
+        <span class="font-semibold text-xl">FashionExpo</span>
+      </div>
+
+      <!-- Menu -->
+      <div class="hidden md:flex space-x-4">
+        
+        <a href="#" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Planning</a>
+        <a href="#" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Over ons</a>
+        <a href="#" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+        <a href="#" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">inloggen</a>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Welkomsttekst -->
+<div class="bg-purple-300 p-4 m-4 border-4 border-gray-400">
+  <h1 class="text-xl font-semibold">welkom bij fashion expo</h1>
+</div>
+
+
+<div class="grid grid-cols-2 md:grid-cols-10 gap-5 px-4">
+ 
+  <div class="cursor-pointer" onclick="openModal('workshop1.jpg')">
+    <img src="./images/zara.jpg" alt="Workshop 1" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+  <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div> <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
+    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+  <!-- meer blokken-->
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+  <div class="bg-white p-4 rounded max-w-2xl w-full">
+    <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto" />
+    <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
+  </div>
+</div>
+
+
+</body>
+</html>
