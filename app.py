@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import dotenv
 import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 # Load environment variables from .env file
 dotenv.load_dotenv()
@@ -33,6 +33,11 @@ roles_collection = db.get_collection("roles")
 
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    # Serve the index.html template
+    return render_template("index.html")
+
 @app.route("/users", methods=["GET"])
 def get_users():
     users = list(users_collection.find({}, {'_id': 0}))  # Exclude MongoDB _id from output
@@ -49,8 +54,9 @@ def add_user():
         return jsonify({"error": f"Missing one of the required fields: {required_fields}"}), 400
     
     users_collection.insert_one(data)
-    return jsonify({"message": "User  added successfully"}), 201
+    return jsonify({"message": "User added successfully"}), 201
 
 # Initiate server
 if __name__ == "__main__":
     app.run(host='localhost', port=5000, debug=True)
+
