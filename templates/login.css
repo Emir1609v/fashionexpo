@@ -53,7 +53,7 @@
       font-family: var(--font-headline);
       font-weight: 700;
       font-size: 3rem; /* ~48px */
-      color: var(--color-text-primary);
+      color: #c79538;
       margin: 0;
       line-height: 1.1;
       text-align: center;
@@ -62,7 +62,7 @@
     /* Subtext paragraph below headline */
     .subtext {
       text-align: center;
-      color: var(--color-text-secondary);
+      color: #c79538;
       font-size: 1rem;
       margin: 0;
       line-height: 1.4;
@@ -79,7 +79,7 @@
     label {
       display: block;
       font-weight: 600;
-      color: var(--color-text-primary);
+      color: #c79538;
       margin-bottom: 0.375rem;
       user-select: none;
       font-size: 0.95rem;
@@ -118,7 +118,7 @@
     }
     button[type="submit"]:hover,
     button[type="submit"]:focus {
-      background-color: #1f2937; /* Slightly darker */
+      background-color: #430f69; /* Slightly darker */
       transform: scale(1.03);
       outline: none;
     }
