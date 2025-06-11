@@ -31,7 +31,8 @@ activiteiten_collection = db.get_collection("activiteiten")
 inschrijven_collection = db.get_collection("inschrijvingen")
 roles_collection = db.get_collection("roles")
 
-app = Flask(__name__)
+app = Flask(__name__
+            )  # Specify the folder for templates)
 
 @app.route("/")
 def home():

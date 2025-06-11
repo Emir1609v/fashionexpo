@@ -50,37 +50,37 @@
 
 <div class="grid grid-cols-2 md:grid-cols-10 gap-5 px-4">
  
-  <div class="cursor-pointer" onclick="openModal('workshop1.jpg')">
-    <img src="./images/zara.jpg" alt="Workshop 1" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+  <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 1" class="w-full h-40 object-cover rounded shadow" />
+</div>
+  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-  <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-   <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
-  </div> <div class="cursor-pointer" onclick="openModal('workshop2.jpg')">
-    <img src="./images/tommy.jpg" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+   <div class="cursor-pointer" onclick="openModal('static/iamges/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div> <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
   <!-- meer blokken-->
 </div>
@@ -90,6 +90,7 @@
   <div class="bg-white p-4 rounded max-w-2xl w-full">
     <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto" />
     <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
+    
   </div>
 </div>
 
