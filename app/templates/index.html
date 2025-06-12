@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,11 @@
   <title>FashionExpo</title>
   <script src="https://cdn.tailwindcss.com"></script> 
 </head>
+
 <script>
-  function openModal(src) {
+  function openModal(src, text) {
     document.getElementById('modalImage').src = src;
+    document.getElementById('modalText').innerText = text;
     document.getElementById('imageModal').classList.remove('hidden');
     document.getElementById('imageModal').classList.add('flex');
   }
@@ -21,82 +24,73 @@
 
 <body class="bg-gray-100">
 
+<!-- Navigatie -->
 <nav class="bg-gray-800 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
       <div class="flex items-center">
-      
         <span class="font-semibold text-xl">FashionExpo</span>
       </div>
-
-      <!-- Menu -->
       <div class="hidden md:flex space-x-4">
-        
         <a href="planning.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Planning</a>
         <a href="overons.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Over ons</a>
         <a href="contact.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-        <a href="login.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">inloggen</a>
-
+        <a href="login.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Inloggen</a>
       </div>
     </div>
   </div>
 </nav>
+
 <!-- Welkomsttekst -->
-<div class="bg-purple-800 p-4 m-4 border-4 border-gray-400">
-  <h1 class="text-xl font-semibold">welkom bij fashion expo</h1>
+<div class="bg-purple-800 p-4 m-4 border-4 border-gray-400 text-white">
+  <h1 class="text-xl font-semibold">Welkom bij FashionExpo</h1>
 </div>
 
-
-<div class="grid grid-cols-5 md:grid-cols-15 gap-5 px-4">
- 
-  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
-  <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 1" class="w-full h-40 object-cover rounded shadow" />
-  
-  <!-- workshop modal divs-->
-</div>
-  <div class="cursor-pointer" onclick="openModal('static/images/AnnaToor.webp')">
-    <img src="{{ url_for('static', filename='images/AnnaToor.webp') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+<!-- Afbeeldingen -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-5 px-4">
+  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg', 'Zara presenteert hun nieuwste zomercollectie.')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Zara" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/Bershka.jpg')">
-    <img src="{{ url_for('static', filename='images/Bershka2.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/AnnaToor.webp', 'Anna Toor toont hun unieke duurzame mode.')">
+    <img src="{{ url_for('static', filename='images/AnnaToor.webp') }}" alt="Anna Toor" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/H&M.webp')">
-    <img src="{{ url_for('static', filename='images/H&M.webp') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/Bershka2.jpg', 'Bershka brengt urban fashion naar een nieuw niveau.')">
+    <img src="{{ url_for('static', filename='images/Bershka2.jpg') }}" alt="Bershka" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/PullnBear.webp')" >
-    <img src="{{ url_for('static', filename='images/PullnBear.webp') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/H&M.webp', 'H&M introduceert hun eco-vriendelijke collectie.')">
+    <img src="{{ url_for('static', filename='images/H&M.webp') }}" alt="H&M" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/RalphLauren.JPG')">
-    <img src="{{ url_for('static', filename='images/RalphLauren.JPG') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/PullnBear.webp', 'Pull&Bear presenteert hun casual-chic herfstlijn.')">
+    <img src="{{ url_for('static', filename='images/PullnBear.webp') }}" alt="Pull&Bear" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/Sting.webp')">
-    <img src="{{ url_for('static', filename='images/Sting.webp') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/RalphLauren.JPG', 'Ralph Lauren showt tijdloze elegantie.')">
+    <img src="{{ url_for('static', filename='images/RalphLauren.JPG') }}" alt="Ralph Lauren" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/tommyH.jpg')">
-    <img src="{{ url_for('static', filename='images/tommyH.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/Sting.webp', 'The Sting brengt speelse streetwear naar de catwalk.')">
+    <img src="{{ url_for('static', filename='images/Sting.webp') }}" alt="The Sting" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/images/zara2.avif')">
-    <img src="{{ url_for('static', filename='images/zara2.avif') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/tommyH.jpg', 'Tommy Hilfiger presenteert hun iconische American style.')">
+    <img src="{{ url_for('static', filename='images/tommyH.jpg') }}" alt="Tommy Hilfiger" class="w-full h-40 object-cover rounded shadow" />
   </div>
-   <div class="cursor-pointer" onclick="openModal('static/iamges/zara.jpg')">
-    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
-  </div> <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
-    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  <div class="cursor-pointer" onclick="openModal('static/images/zara2.avif', 'Zara verrast met een avant-garde capsule collectie.')">
+    <img src="{{ url_for('static', filename='images/zara2.avif') }}" alt="Zara 2" class="w-full h-40 object-cover rounded shadow" />
   </div>
-  
+  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg', 'Nog een voorbeeld van Zara’s veelzijdige design.')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Zara opnieuw" class="w-full h-40 object-cover rounded shadow" />
+  </div>
 </div>
 
-<!-- Modal - vergroting van workshops -->
+<!-- Modal -->
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
   <div class="bg-white p-4 rounded max-w-2xl w-full">
-    <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto" />
-    <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
-    <button  class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Aanmelden</button>
-    
+    <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto rounded" />
+    <p id="modalText" class="mt-4 text-gray-700 text-lg"></p>
+    <div class="mt-4 flex justify-end gap-2">
+      <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
+      <button class="bg-green-500 text-white px-4 py-2 rounded">Aanmelden</button>
+    </div>
   </div>
 </div>
-
 
 </body>
 </html>
