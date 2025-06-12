@@ -26,8 +26,8 @@ except Exception as e:
 db = client.get_database("fashionexpo")
 
 # Access the collections
-users_collection = db.get_collection("users")
-activiteiten_collection = db.get_collection("activiteiten")
+users_collection = db.get_collection("Users")
+activiteiten_collection = db.get_collection("Activiteiten")
 inschrijven_collection = db.get_collection("inschrijvingen")
 roles_collection = db.get_collection("roles")
 
