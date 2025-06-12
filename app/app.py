@@ -26,18 +26,25 @@ except Exception as e:
 db = client.get_database("fashionexpo")
 
 # Access the collections
-users_collection = db.get_collection("Users")
-activiteiten_collection = db.get_collection("Activiteiten")
+users_collection = db.get_collection("users")
+activiteiten_collection = db.get_collection("acictiviteiten")
 inschrijven_collection = db.get_collection("inschrijvingen")
 roles_collection = db.get_collection("roles")
 
 app = Flask(__name__
             )  # Specify the folder for templates)
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
     # Serve the index.html template
     return render_template("index.html")
+
+@app.route("/over_ons", methods=["GET"])
+def over_ons():
+    #server the overons.html template
+    return render_template("overons.html")
+
+
 
 @app.route("/users", methods=["GET"])
 def get_users():
