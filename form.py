@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from pymongo import MongoClient
 import dotenv
 import os
@@ -33,9 +33,20 @@ users_collection.create_index("username", unique=True)
 app = Flask(__name__)
 
 
-@app.route("/")
-def home():
+@app.route("/register", methods =["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+    
     return render_template("register.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+        
+    #     print(f"Your userinfo: \n {username} \n {email} \n {password}")
+    # , methods =["POST"]
