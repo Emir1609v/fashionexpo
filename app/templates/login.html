@@ -1,28 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login - Fashion with a View</title>
-  <link rel="stylesheet" href="login.css" />
-
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <main class="container" role="main" aria-labelledby="login-heading">
-    <h1 class="header" id="login-heading">Sign in to Fashion with a View</h1>
-    <p class="subtext">Welcome back! Please enter your details to continue.</p>
-    <form action="#" method="POST" novalidate>
-      <label for="email">Email address</label>
-      <input type="email" name="email" id="email" autocomplete="username" placeholder="you@example.com" required />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" autocomplete="current-password" placeholder="••••••••" required />
-       <button type="submit" aria-label="Sign in">Sign In</button>
-    </form>
-    <div class="form-footer">
-      <p>Forgot your password? <a href="#" tabindex="0">Reset it here</a>.</p>
-      <p>Don't have an account? <a href="#" tabindex="0">Sign up</a>.</p>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-purple-800 text-white px-6 py-4 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <span class="text-xl font-semibold">Fashion with a View</span>
+      <div class="space-x-4">
+        <a href="{{ url_for('home') }}" class="hover:text-gray-300">Home</a>
+        <a href="{{ url_for('over_ons') }}" class="hover:text-gray-300">Over ons</a>
+        <a href="{{ url_for('contact') }}" class="hover:text-gray-300">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Container -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md mt-12">
+      <h1 class="text-3xl font-bold text-yellow-500 mb-2 text-center">Sign in to Fashion with a View</h1>
+      <p class="text-sm text-gray-600 text-center mb-6">Welcome back! Please enter your details to continue.</p>
+      
+      <form action="#" method="POST" novalidate class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+          <input type="email" name="email" id="email" required placeholder="you@example.com"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" />
+        </div>
+        
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" name="password" id="password" required placeholder="••••••••"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" />
+        </div>
+        
+        <button type="submit"
+          class="w-full bg-purple-800 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors">Sign In</button>
+      </form>
+
+      <div class="text-sm text-center text-gray-600 mt-6">
+        <p>Forgot your password? <a href="#" class="text-purple-600 hover:underline">Reset it here</a>.</p>
+        <p>Don't have an account? <a href="#" class="text-purple-600 hover:underline">Sign up</a>.</p>
+      </div>
     </div>
   </main>
+
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Fashion with a View</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-purple-800 text-white px-6 py-4 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <span class="text-xl font-semibold">Fashion with a View</span>
+      <div class="space-x-4">
+        <a href="{{ url_for('home') }}" class="hover:text-gray-300">Home</a>
+        <a href="{{ url_for('over_ons') }}" class="hover:text-gray-300">Over ons</a>
+        <a href="{{ url_for('contact') }}" class="hover:text-gray-300">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Form -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-2xl mt-12">
+      <h1 class="text-3xl font-bold text-yellow-500 mb-2 text-center">Neem contact met ons op</h1>
+      <p class="text-sm text-gray-600 text-center mb-6">Heb je vragen of opmerkingen? Laat het ons weten via onderstaand formulier.</p>
+      
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Naam</label>
+          <input type="text" name="name" id="name" required placeholder="Jouw naam"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Emailadres</label>
+          <input type="email" name="email" id="email" required placeholder="jij@example.com"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Bericht</label>
+          <textarea name="message" id="message" rows="5" required placeholder="Typ hier je bericht..."
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-purple-800 text-white py-2 px-4 rounded-md hover:bg-purple-700 transition-colors">Verstuur</button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

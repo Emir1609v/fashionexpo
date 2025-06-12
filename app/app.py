@@ -1,8 +1,8 @@
 from pymongo import MongoClient
 import dotenv
 import os
-from flask import Flask, jsonify, request, render_template
-
+from flask import Flask, jsonify, request, render_template, redirect, url_for
+import datetime
 # Load environment variables from .env file
 dotenv.load_dotenv()
 
@@ -44,25 +44,35 @@ def over_ons():
     #server the overons.html template
     return render_template("overons.html")
 
+@app.route("/login", methods = ["GET"])
+def login():
+    # Serve the login.html template
+    return render_template("login.html")
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    #serve the contact.html tempplate
+    return render_template("contact.html")
+
+#register route
+@app.route("/register", methods =["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        technical_date = datetime.datetime.now()
+        functional_date = technical_date.strftime("%A, %w %B, %Y")
 
 
-@app.route("/users", methods=["GET"])
-def get_users():
-    users = list(users_collection.find({}, {'_id': 0}))  # Exclude MongoDB _id from output
-    return jsonify(users)
+        data = {"username" : username, "email" : email, "password" : password, "startdate" : functional_date}
+        users_collection.insert_one(data)
 
-@app.route("/users", methods=["POST"])
-def add_user():
-    data = request.json
-    if not data:
-        return jsonify({"error": "Request body must be JSON"}), 400
-    
-    required_fields = ['username', 'email', 'role']
-    if not all(field in data for field in required_fields):
-        return jsonify({"error": f"Missing one of the required fields: {required_fields}"}), 400
-    
-    users_collection.insert_one(data)
-    return jsonify({"message": "User added successfully"}), 201
+        return redirect(url_for('login'))
+
+
+    return render_template("register.html")
 
 # Initiate server
 if __name__ == "__main__":
