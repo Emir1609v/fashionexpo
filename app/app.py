@@ -51,8 +51,13 @@ def login():
 
 @app.route("/contact", methods=["GET"])
 def contact():
-    #serve the contact.html tempplate
+    #serve the contact.html template
     return render_template("contact.html")
+
+@app.route("/planning", methods=["GET"])
+    #serve the planning
+def planning():
+    return render_template("planning.html")
 
 #register route
 @app.route("/register", methods =["GET", "POST"])
