@@ -7,7 +7,7 @@ import os
 dotenv.load_dotenv()
 
 # Get the MongoDB connection string from environment variables
-MONGO_URI = os.getenv("D_MONGO_URI")
+MONGO_URI = os.getenv("MONGO_URI")
 if not MONGO_URI:
     raise ValueError("MONGO_URI environment variable is not set.")
 
@@ -25,10 +25,7 @@ except Exception as e:
 # Access the database
 db = client.get_database("fashionexpo")
 
-users_collection = db.get_collection("users")
-
-users_collection.create_index("email", unique=True)
-users_collection.create_index("username", unique=True)
+users_collection = db.get_collection("Users")
 
 app = Flask(__name__)
 
@@ -40,13 +37,11 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
 
+        data = {"username" : username, "email" : email, "password" : password}
+        users_collection.insert_one(data)
+
     
     return render_template("register.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-        
-    #     print(f"Your userinfo: \n {username} \n {email} \n {password}")
-    # , methods =["POST"]
