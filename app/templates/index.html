@@ -1,12 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FashionExpo</title>
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <title>Fashion with a view</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- footer animatie-->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 5s ease-in-out;
+    }
+  </style>
 </head>
+
+<body class="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('/static/images/silkP.jpg');">
 
 <script>
   function openModal(src, text) {
@@ -22,75 +33,96 @@
   }
 </script>
 
-<body class="bg-gray-100">
+<main class="flex-grow">
 
-<!-- Navigatie -->
-<nav class="bg-gray-800 text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex items-center">
-        <span class="font-semibold text-xl">FashionExpo</span>
+  <!-- Nav -->
+  <nav class="bg-gray-800 text-[#F7E7CE]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <span class="font-semibold text-xl">Fashion with a view</span>
+        </div>
+        <div class="hidden md:flex space-x-4">
+          <a href="planning.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-[#F7E7CE]">Planning</a>
+          <a href="overons.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-[#F7E7CE]">Over ons</a>
+          <a href="contact.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-[#F7E7CE]">Contact</a>
+          <a href="login.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-[#F7E7CE]">Inloggen</a>
+        </div>
       </div>
-      <div class="hidden md:flex space-x-4">
-        <a href="planning.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Planning</a>
-        <a href="overons.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Over ons</a>
-        <a href="contact.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-        <a href="login.html" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Inloggen</a>
+    </div>
+  </nav>
+
+  <div class="bg-purple-0 p-4 m-4 border-gray-400 text-[#F7E7CE]">
+    <h1 class="text-xl font-semibold">Waar elegantie, duurzaamheid en levensvreugde samenkomen. Zie hier onder de workshops van onze expo. Klik op foto voor meer informatie + aanmelding!</h1>
+  </div>
+
+  <!-- Afbeeldingen -->
+  <div class="grid grid-cols-0 md:grid-cols-5 gap-10 w-full px-8">
+    <div class="cursor-pointer" onclick="openModal('static/images/jackNjones.webp', 'Jack&Jones presenteert hun nieuwste zomercollectie.')">
+      <img src="{{ url_for('static', filename='images/jackNjones.webp') }}" alt="jackNjones" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/AnnaToor.webp', 'Anna Toor toont hun unieke duurzame mode.')">
+      <img src="{{ url_for('static', filename='images/AnnaToor.webp') }}" alt="Anna Toor" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/Bershka2.jpg', 'Bershka brengt urban fashion naar een nieuw niveau.')">
+      <img src="{{ url_for('static', filename='images/Bershka2.jpg') }}" alt="Bershka" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/H&M.webp', 'H&M introduceert hun eco-vriendelijke collectie.')">
+      <img src="{{ url_for('static', filename='images/H&M.webp') }}" alt="H&M" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/PullnBear.webp', 'Pull&Bear presenteert hun casual-chic herfstlijn.')">
+      <img src="{{ url_for('static', filename='images/PullnBear.webp') }}" alt="Pull&Bear" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/RalphLauren.JPG', 'Ralph Lauren showt tijdloze elegantie.')">
+      <img src="{{ url_for('static', filename='images/RalphLauren.JPG') }}" alt="Ralph Lauren" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/Sting.webp', 'The Sting brengt speelse streetwear naar de catwalk.')">
+      <img src="{{ url_for('static', filename='images/Sting.webp') }}" alt="The Sting" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/tommyH.jpg', 'Tommy Hilfiger presenteert hun iconische American style.')">
+      <img src="{{ url_for('static', filename='images/tommyH.jpg') }}" alt="Tommy Hilfiger" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/zara2.avif', 'Zara verrast met een avant-garde capsule collectie.')">
+      <img src="{{ url_for('static', filename='images/zara2.avif') }}" alt="Zara" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+    <div class="cursor-pointer" onclick="openModal('static/images/UGGG.png', 'Ugg combineert comfort en stijl.')">
+      <img src="{{ url_for('static', filename='images/UGGG.png') }}" alt="Ugg" class="w-full h-40 object-cover rounded shadow" />
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+    <div class="bg-white p-4 rounded w-full max-w-4xl mx-4 sm:mx-auto">
+      <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto rounded" />
+      <p id="modalText" class="mt-4 text-gray-700 text-lg"></p>
+      <div class="mt-4 flex justify-end gap-2">
+        <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
+        <button class="bg-green-500 text-white px-4 py-2 rounded">Aanmelden</button>
       </div>
     </div>
   </div>
-</nav>
 
-<!-- Welkomsttekst -->
-<div class="bg-purple-800 p-4 m-4 border-4 border-gray-400 text-white">
-  <h1 class="text-xl font-semibold">Welkom bij FashionExpo</h1>
-</div>
+</main>
 
-<!-- Afbeeldingen -->
-<div class="grid grid-cols-2 md:grid-cols-5 gap-5 px-4">
-  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg', 'Zara presenteert hun nieuwste zomercollectie.')">
-    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Zara" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/AnnaToor.webp', 'Anna Toor toont hun unieke duurzame mode.')">
-    <img src="{{ url_for('static', filename='images/AnnaToor.webp') }}" alt="Anna Toor" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/Bershka2.jpg', 'Bershka brengt urban fashion naar een nieuw niveau.')">
-    <img src="{{ url_for('static', filename='images/Bershka2.jpg') }}" alt="Bershka" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/H&M.webp', 'H&M introduceert hun eco-vriendelijke collectie.')">
-    <img src="{{ url_for('static', filename='images/H&M.webp') }}" alt="H&M" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/PullnBear.webp', 'Pull&Bear presenteert hun casual-chic herfstlijn.')">
-    <img src="{{ url_for('static', filename='images/PullnBear.webp') }}" alt="Pull&Bear" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/RalphLauren.JPG', 'Ralph Lauren showt tijdloze elegantie.')">
-    <img src="{{ url_for('static', filename='images/RalphLauren.JPG') }}" alt="Ralph Lauren" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/Sting.webp', 'The Sting brengt speelse streetwear naar de catwalk.')">
-    <img src="{{ url_for('static', filename='images/Sting.webp') }}" alt="The Sting" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/tommyH.jpg', 'Tommy Hilfiger presenteert hun iconische American style.')">
-    <img src="{{ url_for('static', filename='images/tommyH.jpg') }}" alt="Tommy Hilfiger" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/zara2.avif', 'Zara verrast met een avant-garde capsule collectie.')">
-    <img src="{{ url_for('static', filename='images/zara2.avif') }}" alt="Zara 2" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg', 'Nog een voorbeeld van Zara’s veelzijdige design.')">
-    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Zara opnieuw" class="w-full h-40 object-cover rounded shadow" />
-  </div>
-</div>
-
-<!-- Modal -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
-  <div class="bg-white p-4 rounded max-w-2xl w-full">
-    <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto rounded" />
-    <p id="modalText" class="mt-4 text-gray-700 text-lg"></p>
-    <div class="mt-4 flex justify-end gap-2">
-      <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
-      <button class="bg-green-500 text-white px-4 py-2 rounded">Aanmelden</button>
-    </div>
-  </div>
-</div>
+<!-- Footer -->
+<footer class="bg-gray-800 text-[#F7E7CE] text-center py-4 fade-in">
+  &copy; 2025 SD GROUP4 - All rights reserved.
+</footer>
 
 </body>
 </html>
