@@ -6,7 +6,6 @@
   <title>FashionExpo</title>
   <script src="https://cdn.tailwindcss.com"></script> 
 </head>
-
 <script>
   function openModal(src) {
     document.getElementById('modalImage').src = src;
@@ -18,24 +17,6 @@
     document.getElementById('imageModal').classList.add('hidden');
     document.getElementById('imageModal').classList.remove('flex');
   }
-
-  function aanmelden(button) {
-    const container = button.closest('[data-max]');
-    const max = parseInt(container.getAttribute("data-max"));
-    let count = parseInt(container.getAttribute("data-count"));
-
-    if (count < max) {
-      count++;
-      container.setAttribute("data-count", count);
-      container.querySelector(".count").textContent = count;
-      if (count === max) {
-        button.disabled = true;
-        button.textContent = "Vol!";
-        button.classList.add("bg-gray-400", "cursor-not-allowed");
-        button.classList.remove("bg-purple-600", "hover:bg-purple-700");
-      }
-    }
-  }
 </script>
 
 <body class="bg-gray-100">
@@ -44,39 +25,28 @@
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold tracking-widest text-amber-500">Fashion With A View</h1>
       <nav class="space-x-4">
-        <a href="{{url_for('over_ons')}}" class="hover:underline">overons</a>
-        <a href="{{url_for('login')}}" class="hover:underline">Inloggen</a>
-        <a href="{{url_for('contact')}}" class="hover:underline">Contact</a>
+        <a href="{{url_for ('over_ons')}}" class="hover:underline">overons</a>
+        <a href="{{url_for ('login')}}" class="hover:underline">Inloggen</a>
+        <a href="{{ url_for ('contact')}}" class="hover:underline">Contact</a>
       </nav>
     </div>
   </header>
+<!-- Welkomsttekst -->
 
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 p-4">
-    
-    <!-- Voorbeeld 1 -->
-    <div class="cursor-pointer text-center" data-max="5" data-count="0">
-      <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop Zara" class="w-full h-40 object-cover rounded shadow" onclick="openModal('static/images/zara.jpg')" />
-      <p class="text-sm mt-2">Aanmeldingen: <span class="count">0</span>/5</p>
-      <button onclick="aanmelden(this)" class="mt-1 bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">Aanmelden</button>
-    </div>
 
-    <!-- Voorbeeld 2 -->
-    <div class="cursor-pointer text-center" data-max="8" data-count="0">
-      <img src="{{ url_for('static', filename='images/converse.jpg') }}" alt="Workshop Converse" class="w-full h-40 object-cover rounded shadow" onclick="openModal('static/images/converse.jpg')" />
-      <p class="text-sm mt-2">Aanmeldingen: <span class="count">0</span>/8</p>
-      <button onclick="aanmelden(this)" class="mt-1 bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">Aanmelden</button>
-    </div>
 
-    <!-- Voorbeeld 3 -->
-    <div class="cursor-pointer text-center" data-max="10" data-count="0">
-      <img src="{{ url_for('static', filename='images/nike.jpg') }}" alt="Workshop Nike" class="w-full h-40 object-cover rounded shadow" onclick="openModal('static/images/nike.jpg')" />
-      <p class="text-sm mt-2">Aanmeldingen: <span class="count">0</span>/10</p>
-      <button onclick="aanmelden(this)" class="mt-1 bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">Aanmelden</button>
-    </div>
-
-    <div class="cursor-pointer" onclick="openModal('static/images/adidas.jpg')">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 p-4">
+  <div class="cursor-pointer" onclick="openModal('static/images/zara.jpg')">
+    <img src="{{ url_for('static', filename='images/zara.jpg') }}" alt="Workshop 1" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+  <div class="cursor-pointer" onclick="openModal('static/images/converse.jpg')">
+    <img src="{{ url_for('static', filename='images/converse.jpg') }}" alt="Workshop 2" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+  <div class="cursor-pointer" onclick="openModal('static/images/nike.jpg')">
+    <img src="{{ url_for('static', filename='images/nike.jpg') }}" alt="Workshop 3" class="w-full h-40 object-cover rounded shadow" />
+  </div>
+  <div class="cursor-pointer" onclick="openModal('static/images/adidas.jpg')">
     <img src="{{ url_for('static', filename='images/adidas.jpg') }}" alt="Workshop 4" class="w-full h-40 object-cover rounded shadow" />
-    
   </div>
   <div class="cursor-pointer" onclick="openModal('static/images/tommy.jpg')">
     <img src="{{ url_for('static', filename='images/tommy.jpg') }}" alt="Workshop 5" class="w-full h-40 object-cover rounded shadow" />
@@ -137,17 +107,18 @@
   </div>
   <div class="cursor-pointer" onclick="openModal('static/images/kanye.jpg')">
     <img src="{{ url_for('static', filename='images/kanye.jpg') }}" alt="Workshop 10" class="w-full h-40 object-cover rounded shadow" />
-  </div>  
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
+  <div class="bg-white p-4 rounded max-w-2xl w-full">
+    <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto" />
+    <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
     
   </div>
+</div>
 
-  <!-- Modal -->
-  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
-    <div class="bg-white p-4 rounded max-w-2xl w-full">
-      <img id="modalImage" src="" alt="Vergrote afbeelding" class="w-full h-auto" />
-      <button onclick="closeModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sluiten</button>
-    </div>
-  </div>
 
 </body>
 </html>
