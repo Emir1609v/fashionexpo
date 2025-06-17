@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, flash, render_template, request, redirect, url_for
 from pymongo import MongoClient
 import dotenv
 import os
@@ -49,6 +49,26 @@ def register():
 
     
     return render_template("register.html")
+
+@app.route("/login", methods =["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        if email and password:
+            db_data = users_collection.find_one({"email": email, "password" : password})
+        else:
+            flash("Incorrect username or password")
+
+        redirect()
+        
+
+        print(f"ingelogd als: {db_data["username"]}")
+
+        
+    
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
