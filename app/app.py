@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import dotenv
 import os
-from flask import Flask, jsonify, request, render_template, redirect, url_for
+from flask import Flask, jsonify, request, render_template, redirect, url_for, flash
 import datetime
 # Load environment variables from .env file
 dotenv.load_dotenv()
@@ -44,10 +44,27 @@ def over_ons():
     #server the overons.html template
     return render_template("overons.html")
 
+@app.route("/home2", methods=["GET"])
+def home2():
+    #serve the home template
+    return render_template("index2.html")
 
 
-@app.route("/login", methods = ["GET"])
+@app.route("/login", methods = ["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        if email and password:
+            db_data = users_collection.find_one({"email": email, "password" : password})
+        else:
+            flash("Incorrect username or password")
+
+        return redirect(url_for("home2"))
+
+
+        print(f"ingelogd als: {db_data["username"]}")
     # Serve the login.html template
     return render_template("login.html")
 
@@ -60,6 +77,8 @@ def contact():
     #serve the planning
 def planning():
     return render_template("planning.html")
+
+
 
 #register route
 @app.route("/register", methods =["GET", "POST"])
