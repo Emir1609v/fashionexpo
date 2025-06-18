@@ -30,6 +30,8 @@ users_collection = db.get_collection("Users")
 activiteiten_collection = db.get_collection("Activiteiten")
 inschrijven_collection = db.get_collection("inschrijvingen")
 roles_collection = db.get_collection("roles")
+workshops_collection = db.get_collection("workshops")
+
 
 app = Flask(__name__
             )  # Specify the folder for templates)
@@ -39,6 +41,7 @@ def home():
     # Serve the index.html template
     return render_template("index.html")
 
+<<<<<<< Updated upstream
 @app.route("/users", methods=["GET"])
 def get_users():
     users = list(users_collection.find({}, {'_id': 0}))  # Exclude MongoDB _id from output
@@ -56,6 +59,51 @@ def add_user():
     
     users_collection.insert_one(data)
     return jsonify({"message": "User added successfully"}), 201
+=======
+
+
+@app.route("/over_ons", methods=["GET"])
+def over_ons():
+    #server the overons.html template
+    return render_template("overons.html")
+
+@app.route("/login", methods = ["GET"])
+def login():
+    # Serve the login.html template
+    return render_template("login.html")
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    #serve the contact.html template
+    return render_template("contact.html")
+
+@app.route("/planning", methods=["GET"])
+    #serve the planning
+def planning():
+    return render_template("planning.html")
+
+
+
+#register route
+@app.route("/register2", methods =["GET", "POST"])
+def register2():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+
+        technical_date = datetime.datetime.now()
+        functional_date = technical_date.strftime("%A, %w %B, %Y")
+
+
+        data = {"username" : username, "email" : email, "password" : password, "startdate" : functional_date}
+        users_collection.insert_one(data)
+
+        return redirect(url_for('login'))
+
+
+    return render_template("register.html")
+>>>>>>> Stashed changes
 
 # Initiate server
 if __name__ == "__main__":
