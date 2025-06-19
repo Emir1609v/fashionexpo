@@ -56,13 +56,12 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        if email and password:
-            db_data = users_collection.find_one({"email": email, "password" : password})
+        db_data = users_collection.find_one({"email": email, "password" : password})
+
+        if email and password == db_data:
+            return redirect(url_for("home2"))
         else:
-            flash("Incorrect username or password")
-
-        return redirect(url_for("home2"))
-
+            return f"Wrong details for e-mail or password"
 
         print(f"ingelogd als: {db_data["username"]}")
     # Serve the login.html template
